@@ -9,7 +9,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: otavio8dmt/base
+    image: otavio8dmt/ead-api
     working_dir: /var/www/
     volumes:
       - ./:/var/www/
@@ -25,7 +25,7 @@ services:
     image: nginx:alpine
     restart: always
     ports:
-      - 8088:80
+      - 8081:80
     volumes:
       - ./:/var/www
       - ./docker/nginx/:/etc/nginx/conf.d/
@@ -37,7 +37,7 @@ services:
     image: mysql:5.7.22
     restart: always
     ports:
-      - 3307:3306
+      - 3308:3306
     volumes:
       - ./.docker/mysql:/var/lib/mysql
     environment:
@@ -53,7 +53,7 @@ services:
     image: phpmyadmin
     restart: always
     ports:
-      - 8089:80
+      - 8989:80
     environment:
       PMA_HOST: ${DB_HOST}
     networks:
